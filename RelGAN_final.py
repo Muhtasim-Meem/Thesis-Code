@@ -11,31 +11,29 @@ import matplotlib.pyplot as plt
 bangla_stopwords = set([
     'আমি', 'তুমি', 'সে', 'এটি', 'একটি', 'এই', 'তাদের', 'আমরা', 'আপনি', 'ও', 'এর', 'করে', 'হওয়া', 'ছিল', 'ছিলেন', 
     'কেন', 'এবং', 'থেকে', 'এরপর', 'যখন', 'বাবদ', 'তবে', 'অথবা', 'যত', 'পরে', 'ওই', 'তাদের', 'তা', 'এখন', 'সে', 'যাহা'
-    # Add more stopwords as needed
+    
 ])
 
-# Function for Bangla text preprocessing
 import re
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
 def preprocess_bangla_text(text):
-    # Lowercase the text
+    
     text = text.lower()
     
-    # Remove URLs
+   
     text = re.sub(r'http\S+', '', text)
     
-    # Remove non-Bangla characters
+
     text = re.sub(r'[^a-zA-Z0-9\s\u0980-\u09FF]', '', text)
     
-    # Tokenize the text
+ 
     words = word_tokenize(text)
     
-    # Remove stopwords
+ 
     words = [word for word in words if word not in bangla_stopwords]
     
-    # Join words back to form the processed text
     return ' '.join(words)
 
 # Load preprocessed data
